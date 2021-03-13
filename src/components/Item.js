@@ -6,14 +6,12 @@ import Paper from '@material-ui/core/Paper'
 import Typography from '@material-ui/core/Typography'
 import ButtonBase from '@material-ui/core/ButtonBase'
 
-import image from '../images/bread-img.jpg'
-
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    marginTop: '2vh'
   },
   paper: {
+    marginTop: '2vh',
     padding: theme.spacing(2),
     margin: 'auto',
     maxWidth: 500,
@@ -30,19 +28,20 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-export default function Item() {
+export default function Item(props) {
   const classes = useStyles()
 
   return (
     <div className={classes.root}>
-      <Paper className={classes.paper}>
+      {props.items.map((item) => (
+        <Paper key={item.id} className={classes.paper}>
         <Grid container spacing={2}>
           <Grid item>
             <ButtonBase className={classes.image}>
               <img
                 className={classes.img}
                 alt='complex'
-                src={image}
+                src={item.image}
               />
             </ButtonBase>
           </Grid>
@@ -50,27 +49,28 @@ export default function Item() {
             <Grid item xs container direction='column' spacing={2}>
               <Grid item xs>
                 <Typography gutterBottom variant='subtitle1'>
-                  Standard license
+                  {item.name}
                 </Typography>
                 <Typography variant='body2' gutterBottom>
-                  Full resolution 1920x1080 • JPEG
+                  {item.weight}
                 </Typography>
                 <Typography variant='body2' color='textSecondary'>
-                  ID: 1030114
+                  {item.weight}
                 </Typography>
               </Grid>
               <Grid item>
                 <Typography variant='body2' style={{ cursor: 'pointer' }}>
-                  Remove
+                  {item.price}
                 </Typography>
               </Grid>
             </Grid>
             <Grid item>
-              <Typography variant='subtitle1'>$19.00</Typography>
+              <Typography variant='subtitle1'>{item.price}</Typography>
             </Grid>
           </Grid>
         </Grid>
       </Paper>
+      ))}
     </div>
   )
 }
