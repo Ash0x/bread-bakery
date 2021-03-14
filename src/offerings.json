@@ -2,7 +2,7 @@
   {
     "id": 1,
     "name": "Sourdough",
-    "ingredients": "",
+    "ingredients": "yeast, salt, sugar, unbleached flour, sourdough starter, water",
     "weight": "1 lb",
     "image": "/assets/Sourdough.jpg",
     "description": "Sourdough bread is a great alternative to conventional bread. Its lower phytate levels make it more nutritious and easier to digest. Sourdough bread also seems less likely to spike your blood sugar levels, which makes it an option for those monitoring their blood sugar.",
@@ -11,7 +11,7 @@
   {
     "id": 2,
     "name": "Whole Wheat",
-    "ingredients": "",
+    "ingredients": "cracked wheat, wheat gluten, sugar, molasses, soybean oil, yeast, whole wheat flour, water",
     "weight": "1.5 lb",
     "image": "/assets/WholeWheat.jpg",
     "description": "Whole wheat bread is made up of wheat kernels that still contain all three components—the bran, germ and endosperm of the kernel. Whole grain bread also contains the entire kernel of wheat, as well as other whole grains like oats, brown rice or barley.",
@@ -20,7 +20,7 @@
   {
     "id": 3,
     "name": "Whole Grain",
-    "ingredients": "",
+    "ingredients": "grains, cracked wheat, wheat gluten, sugar, molasses, soybean oil, yeast, whole wheat flour, water",
     "weight": "0.5 lb",
     "image": "/assets/WholeGrain.jpg",
     "description": "Similar to whole wheat bread, whole grain bread is made up of grains that are fully intact. In addition to wheat, whole grain bread can include other whole grains, such as whole barley, brown rice, whole grain oats, and rolled oats, among others.",
@@ -29,9 +29,10 @@
   {
     "id": 4,
     "name": "Soda Bread",
-    "ingredients": "",
+    "ingredients": "buttermilk, egg, unbleached flour, sugar, salt, baking soda, unsalted butter, raisins",
     "weight": "1 lb",
     "image": "/assets/SodaBread.jpg",
+    "description": "Soda Bread is a quick bread that does not require any yeast. Instead, all of its leavening comes from baking soda and buttermilk.",
     "price": "$2"
   }
 ]
