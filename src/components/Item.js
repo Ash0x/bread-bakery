@@ -6,6 +6,7 @@ import Paper from '@material-ui/core/Paper'
 import Typography from '@material-ui/core/Typography'
 import ButtonBase from '@material-ui/core/ButtonBase'
 import Button from '@material-ui/core/Button'
+
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -38,16 +39,30 @@ export default function Item(props) {
           <Grid container spacing={2}>
             <Grid item>
               <ButtonBase className={classes.image}>
-                <img className={classes.img} alt='product_image' src={item.image} />
+                <img
+                  className={classes.img}
+                  alt='product_image'
+                  src={item.image}
+                />
               </ButtonBase>
             </Grid>
             <Grid item xs={12} sm container>
               <Grid item xs container direction='column' spacing={2}>
                 <Grid item xs>
-                  <Typography gutterBottom variant='subtitle1'>
-                    {item.name}, {item.weight}
+                  <Typography
+                    variant='h6'
+                    color='secondary'
+                    align='justify'>
+                    {item.name}
                   </Typography>
-                  <Typography variant='body2' gutterBottom>
+                  <Typography
+                    gutterBottom
+                    variant='h6'
+                    color='secondary'
+                    align='justify'>
+                    {item.weight}
+                  </Typography>
+                  <Typography variant='body1' gutterBottom>
                     {item.description}
                   </Typography>
                   <Typography variant='body2' color='textSecondary'>
@@ -61,7 +76,7 @@ export default function Item(props) {
                 </Grid>
               </Grid>
               <Grid item>
-                <Typography variant='subtitle1'>{item.price}</Typography>
+                <Typography variant='subtitle1'>{`$${item.price}`}</Typography>
               </Grid>
             </Grid>
           </Grid>
