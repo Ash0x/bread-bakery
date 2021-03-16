@@ -13,6 +13,7 @@ import About from './components/views/About'
 import Order from './components/views/Order'
 
 export default function App() {
+
   return (
     <React.Fragment>
       <Router>
@@ -31,7 +32,7 @@ export default function App() {
             <Route path='/order' exact>
               <Order />
             </Route>
-          <Redirect to='/' />
+            <Redirect to='/' />
           </Switch>
         </main>
       </Router>

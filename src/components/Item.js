@@ -35,7 +35,7 @@ export default function Item(props) {
   return (
     <div className={classes.root}>
       {props.items.map((item) => (
-        <Paper key={item.id} className={classes.paper}>
+        <Paper key={item.id} className={classes.paper} elevation={5}>
           <Grid container spacing={2}>
             <Grid item>
               <ButtonBase className={classes.image}>
