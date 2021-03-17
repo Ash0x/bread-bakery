@@ -11,6 +11,7 @@ import Menu from './components/views/Menu'
 import Contact from './components/views/Contact'
 import About from './components/views/About'
 import Order from './components/views/Order'
+import Footer from './components/Footer'
 
 export default function App() {
 
@@ -35,6 +36,7 @@ export default function App() {
             <Redirect to='/' />
           </Switch>
         </main>
+          <Footer />
       </Router>
     </React.Fragment>
   )

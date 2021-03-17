@@ -5,3 +5,8 @@
   background-attachment: fixed;
   overflow:auto;
 }
+
+footer {
+  background-color: khaki;
+  align-items:flex-end
+}

@@ -12,7 +12,6 @@ import PhoneRoundedIcon from '@material-ui/icons/PhoneRounded'
 import StorefrontRoundedIcon from '@material-ui/icons/StorefrontRounded'
 import InfoRoundedIcon from '@material-ui/icons/InfoRounded'
 import CreditCardRoundedIcon from '@material-ui/icons/CreditCardRounded'
-import PermIdentityRoundedIcon from '@material-ui/icons/PermIdentityRounded'
 
 const useStyles = makeStyles({
   headerStyle: {
@@ -26,20 +25,15 @@ const useStyles = makeStyles({
 export default function Navbar() {
   const classes = useStyles()
   const [activeTab, setactiveTab] = useState(false)
-  const [isLoggedIn, setIsLoggedIn] = useState(true)
 
   //  const routes = ['/logout', '/login', '/menu', /contact', '/order', '/about']
 
   const handleChange = (event, newValue) => {
     setactiveTab(newValue)
-
-    console.log(newValue)
   }
 
-  const handleLogin = () => setIsLoggedIn(!isLoggedIn)
-
   return (
-    <AppBar square className={classes.headerStyle}>
+    <AppBar position='sticky' square className={classes.headerStyle}>
       <Tabs
         value={activeTab}
         onChange={handleChange}
@@ -47,23 +41,6 @@ export default function Navbar() {
         indicatorColor='secondary'
         textColor='inherit'
         aria-label='icon label tabs example'>
-        {isLoggedIn ? (
-          <Tab
-          onClick={handleLogin}
-            icon={<PermIdentityRoundedIcon />}
-            label='LOG OUT'
-            component={NavLink}
-            to='/logout'
-          />
-        ) : (
-          <Tab
-          onClick={handleLogin}
-            icon={<PermIdentityRoundedIcon />}
-            label='LOG IN'
-            component={NavLink}
-            to='/login'
-          />
-        )}
         <Tab
           icon={<StorefrontRoundedIcon />}
           label='MENU'
