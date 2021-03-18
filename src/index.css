@@ -8,4 +8,12 @@
 
 footer {
   text-align: right;
+  position:absolute;
+  width:98%;
+  bottom:0;
+}
+
+footer a {
+  background-color:tomato;
+  color: whitesmoke
 }
