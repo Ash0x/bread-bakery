@@ -11,11 +11,11 @@ interface Values {
 }
 
 const formStyle = {
-  padding: '0.5vh',
+  backgroundColor: 'rgb(245, 245, 245,0.7)',
+  padding: '1vh',
 }
 
 const textInputStyle = {
-  backgroundColor: 'whitesmoke',
   margin: '0.5vh',
 }
 
@@ -50,6 +50,7 @@ export default function Order() {
           <Form style={formStyle}>
             <Grid item xs={12}>
               <Field
+                variant='outlined'
                 style={textInputStyle}
                 component={TextField}
                 name='firstname'
@@ -59,6 +60,7 @@ export default function Order() {
             </Grid>
             <Grid item xs={12}>
               <Field
+                variant='outlined'
                 style={textInputStyle}
                 component={TextField}
                 name='lastname'
@@ -68,6 +70,7 @@ export default function Order() {
             </Grid>
             <Grid item xs={12}>
               <Field
+                variant='outlined'
                 style={textInputStyle}
                 component={TextField}
                 name='email'
@@ -77,6 +80,7 @@ export default function Order() {
             </Grid>
             <Grid item xs={12}>
               <Field
+                variant='outlined'
                 style={textInputStyle}
                 component={TextField}
                 type='password'
@@ -89,8 +93,9 @@ export default function Order() {
             </Grid>
             <Grid item xs={12}>
               <Button
+                size='small'
                 variant='contained'
-                color='primary'
+                color='secondary'
                 disabled={isSubmitting}
                 onClick={submitForm}>
                 Submit
