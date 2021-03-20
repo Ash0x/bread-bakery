@@ -12,6 +12,7 @@ interface Values {
 
 const formStyle = {
   backgroundColor: 'rgb(245, 245, 245,0.7)',
+  borderRadius: '1vh',
   padding: '1vh',
 }
 
