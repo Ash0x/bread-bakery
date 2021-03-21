@@ -4,6 +4,7 @@ import Grid from '@material-ui/core/Grid'
 import { Formik, Form, Field } from 'formik'
 import { Button, CircularProgress } from '@material-ui/core'
 import { TextField } from 'formik-material-ui'
+import SendIcon from '@material-ui/icons/Send'
 
 interface Values {
   email: string;
@@ -11,7 +12,7 @@ interface Values {
 }
 
 const formStyle = {
-  backgroundColor: 'rgb(245, 245, 245,0.7)',
+  backgroundColor: 'rgb(245, 245, 245,0.8)',
   borderRadius: '1vh',
   padding: '1vh',
 }
@@ -94,11 +95,12 @@ export default function Order() {
             </Grid>
             <Grid item xs={12}>
               <Button
-                size='small'
+                size='large'
                 variant='contained'
                 color='secondary'
                 disabled={isSubmitting}
-                onClick={submitForm}>
+                onClick={submitForm}
+                endIcon={<SendIcon />}>
                 Submit
               </Button>
             </Grid>
