@@ -16,6 +16,8 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2),
     margin: 'auto',
     maxWidth: 500,
+    backgroundColor: 'rgb(245, 245, 245,0.9)',
+    borderRadius: '1vh'
   },
   image: {
     width: 128,
@@ -49,10 +51,7 @@ export default function Item(props) {
             <Grid item xs={12} sm container>
               <Grid item xs container direction='column' spacing={2}>
                 <Grid item xs>
-                  <Typography
-                    variant='h6'
-                    color='secondary'
-                    align='justify'>
+                  <Typography variant='h6' color='secondary' align='justify'>
                     {item.name}
                   </Typography>
                   <Typography

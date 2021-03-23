@@ -1,10 +1,16 @@
-import * as React from 'react'
+import React from 'react'
 
-import Grid from '@material-ui/core/Grid'
 import { Formik, Form, Field } from 'formik'
-import { Button, CircularProgress } from '@material-ui/core'
+import {
+  Button,
+  CircularProgress,
+  Grid,
+  MenuItem
+} from '@material-ui/core'
 import { TextField } from 'formik-material-ui'
 import SendIcon from '@material-ui/icons/Send'
+
+const OFFERINGS = require('../../offerings.json')
 
 interface Values {
   email: string;
@@ -22,6 +28,12 @@ const textInputStyle = {
 }
 
 export default function Order() {
+  /*  const [product, setProduct] = useState('')
+
+ const handleChange = (event) => {
+    setProduct(event.target.value)
+  } */
+
   return (
     <Formik
       initialValues={{
@@ -29,6 +41,7 @@ export default function Order() {
         lastname: '',
         email: '',
         password: '',
+        cart: '',
       }}
       validate={(values) => {
         const errors: Partial<Values> = {}
@@ -91,8 +104,23 @@ export default function Order() {
               />
             </Grid>
             <Grid item xs={12}>
-              {isSubmitting && <CircularProgress color='secondary' />}
+            <Field
+                variant='outlined'
+                style={textInputStyle}
+                component={TextField}
+                select
+                name='cart'
+                type='cart'
+                label='Select Product'
+                fullWidth>
+                  {OFFERINGS.map(option => (<MenuItem key={option.id} value={option.name}>{option.name}</MenuItem>))}
+                </Field>
             </Grid>
+            {isSubmitting && (
+              <Grid item xs={12}>
+                <CircularProgress color='secondary' />
+              </Grid>
+            )}
             <Grid item xs={12}>
               <Button
                 size='large'
