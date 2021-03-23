@@ -1,12 +1,7 @@
 import React from 'react'
 
 import { Formik, Form, Field } from 'formik'
-import {
-  Button,
-  CircularProgress,
-  Grid,
-  MenuItem
-} from '@material-ui/core'
+import { Button, CircularProgress, Grid, MenuItem } from '@material-ui/core'
 import { TextField } from 'formik-material-ui'
 import SendIcon from '@material-ui/icons/Send'
 
@@ -104,7 +99,7 @@ export default function Order() {
               />
             </Grid>
             <Grid item xs={12}>
-            <Field
+              <Field
                 variant='outlined'
                 style={textInputStyle}
                 component={TextField}
@@ -113,8 +108,12 @@ export default function Order() {
                 type='cart'
                 label='Select Product'
                 fullWidth>
-                  {OFFERINGS.map(option => (<MenuItem key={option.id} value={option.name}>{option.name}</MenuItem>))}
-                </Field>
+                {OFFERINGS.map((option) => (
+                  <MenuItem key={option.id} value={option.name}>
+                    {option.name}
+                  </MenuItem>
+                ))}
+              </Field>
             </Grid>
             {isSubmitting && (
               <Grid item xs={12}>
