@@ -35,8 +35,9 @@ export default function Order() {
         firstname: '',
         lastname: '',
         email: '',
-        password: '',
+        telephone: '',
         cart: '',
+        qty: undefined,
       }}
       validate={(values) => {
         const errors: Partial<Values> = {}
@@ -56,9 +57,9 @@ export default function Order() {
         }, 1000)
       }}>
       {({ submitForm, isSubmitting }) => (
-        <Grid container justify='center'>
           <Form style={formStyle}>
-            <Grid item xs={12}>
+          <Grid container justify='center' alignItems='center'>
+            <Grid item xs={6} alignContent='center'>
               <Field
                 variant='outlined'
                 style={textInputStyle}
@@ -68,7 +69,7 @@ export default function Order() {
                 label='First Name'
               />
             </Grid>
-            <Grid item xs={12}>
+            <Grid item xs={6} alignContent='center'>
               <Field
                 variant='outlined'
                 style={textInputStyle}
@@ -78,6 +79,8 @@ export default function Order() {
                 label='Last Name'
               />
             </Grid>
+            </Grid>
+            <Grid container justify='center'>
             <Grid item xs={12}>
               <Field
                 variant='outlined'
@@ -93,11 +96,13 @@ export default function Order() {
                 variant='outlined'
                 style={textInputStyle}
                 component={TextField}
-                type='password'
-                label='Password'
-                name='password'
+                name='telephone'
+                type='telephone'
+                label='Contact Number'
               />
             </Grid>
+            </Grid>
+            <Grid container justify='center'>
             <Grid item xs={12}>
               <Field
                 variant='outlined'
@@ -114,6 +119,17 @@ export default function Order() {
                   </MenuItem>
                 ))}
               </Field>
+            </Grid>
+            <Grid item xs={12}>
+              <Field
+                variant='outlined'
+                style={textInputStyle}
+                component={TextField}
+                name='qty'
+                type='number'
+                label='Qty'
+              />
+            </Grid>
             </Grid>
             {isSubmitting && (
               <Grid item xs={12}>
@@ -132,7 +148,6 @@ export default function Order() {
               </Button>
             </Grid>
           </Form>
-        </Grid>
       )}
     </Formik>
   )
