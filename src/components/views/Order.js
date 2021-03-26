@@ -1,13 +1,11 @@
 import React from 'react'
 
-import { Formik, Form, Field } from 'formik'
 import { Button, CircularProgress, Grid, MenuItem } from '@material-ui/core'
+import { MuiPickersUtilsProvider } from '@material-ui/pickers'
+import { Formik, Form, Field } from 'formik'
 import { TextField } from 'formik-material-ui'
-import {
-  TimePicker,
-  DatePicker,
-  DateTimePicker,
-} from 'formik-material-ui-pickers'
+import { DateTimePicker } from 'formik-material-ui-pickers'
+import DateFnsUtils from '@date-io/date-fns'
 import SendIcon from '@material-ui/icons/Send'
 
 const OFFERINGS = require('../../offerings.json')
@@ -44,8 +42,6 @@ export default function Order() {
         telephone: '',
         cart: '',
         qty: undefined,
-        date: new Date(),
-        time: new Date(),
         dateTime: new Date(),
       }}
       validate={(values) => {
@@ -139,6 +135,18 @@ export default function Order() {
               />
             </Grid>
           </Grid>
+          <MuiPickersUtilsProvider utils={DateFnsUtils}>
+            <Grid item xs={12} align='center'>
+              <Field
+                inputVariant='outlined'
+                style={textInputStyle}
+                component={DateTimePicker}
+                name='dateTime'
+                label='Pick-Up Time'
+                disablePast
+              />
+            </Grid>
+          </MuiPickersUtilsProvider>
           {isSubmitting && (
             <Grid item xs={12} align='center'>
               <CircularProgress color='secondary' />
@@ -154,17 +162,6 @@ export default function Order() {
               endIcon={<SendIcon />}>
               Submit
             </Button>
-            <Grid item xs={12} align='center'>
-              <Field component={TimePicker} name='time' label='Time' />
-              <br />
-              <Field component={DatePicker} name='date' label='Date' />
-              <br />
-              <Field
-                component={DateTimePicker}
-                name='dateTime'
-                label='Date Time'
-              />
-            </Grid>
           </Grid>
         </Form>
       )}
