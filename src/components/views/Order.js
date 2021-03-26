@@ -3,6 +3,11 @@ import React from 'react'
 import { Formik, Form, Field } from 'formik'
 import { Button, CircularProgress, Grid, MenuItem } from '@material-ui/core'
 import { TextField } from 'formik-material-ui'
+import {
+  TimePicker,
+  DatePicker,
+  DateTimePicker,
+} from 'formik-material-ui-pickers'
 import SendIcon from '@material-ui/icons/Send'
 
 const OFFERINGS = require('../../offerings.json')
@@ -20,6 +25,7 @@ const formStyle = {
 
 const textInputStyle = {
   margin: '0.5vh',
+  display: 'flex',
 }
 
 export default function Order() {
@@ -38,6 +44,9 @@ export default function Order() {
         telephone: '',
         cart: '',
         qty: undefined,
+        date: new Date(),
+        time: new Date(),
+        dateTime: new Date(),
       }}
       validate={(values) => {
         const errors: Partial<Values> = {}
@@ -57,9 +66,9 @@ export default function Order() {
         }, 1000)
       }}>
       {({ submitForm, isSubmitting }) => (
-          <Form style={formStyle}>
-          <Grid container justify='center' alignItems='center'>
-            <Grid item xs={6} alignContent='center'>
+        <Form style={formStyle}>
+          <Grid container align='center'>
+            <Grid item xs={12} sm={6}>
               <Field
                 variant='outlined'
                 style={textInputStyle}
@@ -69,7 +78,7 @@ export default function Order() {
                 label='First Name'
               />
             </Grid>
-            <Grid item xs={6} alignContent='center'>
+            <Grid item xs={12} sm={6}>
               <Field
                 variant='outlined'
                 style={textInputStyle}
@@ -79,9 +88,9 @@ export default function Order() {
                 label='Last Name'
               />
             </Grid>
-            </Grid>
-            <Grid container justify='center'>
-            <Grid item xs={12}>
+          </Grid>
+          <Grid container align='center'>
+            <Grid item xs={12} sm={6}>
               <Field
                 variant='outlined'
                 style={textInputStyle}
@@ -91,7 +100,7 @@ export default function Order() {
                 label='Email'
               />
             </Grid>
-            <Grid item xs={12}>
+            <Grid item xs={12} sm={6}>
               <Field
                 variant='outlined'
                 style={textInputStyle}
@@ -101,9 +110,9 @@ export default function Order() {
                 label='Contact Number'
               />
             </Grid>
-            </Grid>
-            <Grid container justify='center'>
-            <Grid item xs={12}>
+          </Grid>
+          <Grid container align='center'>
+            <Grid item xs={12} sm={6}>
               <Field
                 variant='outlined'
                 style={textInputStyle}
@@ -111,8 +120,7 @@ export default function Order() {
                 select
                 name='cart'
                 type='cart'
-                label='Select Product'
-                fullWidth>
+                label='Select Product'>
                 {OFFERINGS.map((option) => (
                   <MenuItem key={option.id} value={option.name}>
                     {option.name}
@@ -120,7 +128,7 @@ export default function Order() {
                 ))}
               </Field>
             </Grid>
-            <Grid item xs={12}>
+            <Grid item xs={12} sm={6}>
               <Field
                 variant='outlined'
                 style={textInputStyle}
@@ -130,24 +138,35 @@ export default function Order() {
                 label='Qty'
               />
             </Grid>
+          </Grid>
+          {isSubmitting && (
+            <Grid item xs={12} align='center'>
+              <CircularProgress color='secondary' />
             </Grid>
-            {isSubmitting && (
-              <Grid item xs={12}>
-                <CircularProgress color='secondary' />
-              </Grid>
-            )}
-            <Grid item xs={12}>
-              <Button
-                size='large'
-                variant='contained'
-                color='secondary'
-                disabled={isSubmitting}
-                onClick={submitForm}
-                endIcon={<SendIcon />}>
-                Submit
-              </Button>
+          )}
+          <Grid item xs={12} align='center'>
+            <Button
+              size='large'
+              variant='contained'
+              color='secondary'
+              disabled={isSubmitting}
+              onClick={submitForm}
+              endIcon={<SendIcon />}>
+              Submit
+            </Button>
+            <Grid item xs={12} align='center'>
+              <Field component={TimePicker} name='time' label='Time' />
+              <br />
+              <Field component={DatePicker} name='date' label='Date' />
+              <br />
+              <Field
+                component={DateTimePicker}
+                name='dateTime'
+                label='Date Time'
+              />
             </Grid>
-          </Form>
+          </Grid>
+        </Form>
       )}
     </Formik>
   )
