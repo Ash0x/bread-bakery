@@ -28,7 +28,6 @@ const textInputStyle = {
 
 export default function Order() {
   /*  const [product, setProduct] = useState('')
-
  const handleChange = (event) => {
     setProduct(event.target.value)
   } */
