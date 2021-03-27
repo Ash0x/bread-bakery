@@ -134,8 +134,8 @@ export default function Order() {
               />
             </Grid>
           </Grid>
-          <MuiPickersUtilsProvider utils={DateFnsUtils}>
-            <Grid item xs={12} align='center'>
+          <Grid item xs={12} align='center'>
+            <MuiPickersUtilsProvider utils={DateFnsUtils}>
               <Field
                 inputVariant='outlined'
                 style={textInputStyle}
@@ -144,8 +144,8 @@ export default function Order() {
                 label='Pick-Up Time'
                 disablePast
               />
-            </Grid>
-          </MuiPickersUtilsProvider>
+            </MuiPickersUtilsProvider>
+          </Grid>
           {isSubmitting && (
             <Grid item xs={12} align='center'>
               <CircularProgress color='secondary' />
