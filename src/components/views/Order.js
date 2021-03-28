@@ -1,6 +1,12 @@
 import React from 'react'
 
-import { Button, CircularProgress, Grid, MenuItem } from '@material-ui/core'
+import {
+  Button,
+  CircularProgress,
+  Grid,
+  MenuItem,
+  Switch,
+} from '@material-ui/core'
 import { MuiPickersUtilsProvider } from '@material-ui/pickers'
 import { Formik, Form, Field } from 'formik'
 import { TextField } from 'formik-material-ui'
@@ -33,137 +39,142 @@ export default function Order() {
   } */
 
   return (
-    <Formik
-      initialValues={{
-        firstname: '',
-        lastname: '',
-        email: '',
-        telephone: '',
-        cart: '',
-        qty: undefined,
-        dateTime: new Date(),
-      }}
-      validate={(values) => {
-        const errors: Partial<Values> = {}
-        if (!values.email) {
-          errors.email = 'Enter your email'
-        } else if (
-          !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
-        ) {
-          errors.email = 'Invalid email address'
-        }
-        return errors
-      }}
-      onSubmit={(values, { setSubmitting }) => {
-        setTimeout(() => {
-          setSubmitting(false)
-          alert(JSON.stringify(values, null, 2))
-        }, 1000)
-      }}>
-      {({ submitForm, isSubmitting }) => (
-        <Form style={formStyle}>
-          <Grid container align='center'>
-            <Grid item xs={12} sm={6}>
-              <Field
-                variant='outlined'
-                style={textInputStyle}
-                component={TextField}
-                name='firstname'
-                type='firstname'
-                label='First Name'
-              />
+    <React.Fragment>
+      <Grid container justify='center'>
+      Pickup<Switch />Delivery
+      </Grid>
+      <Formik
+        initialValues={{
+          firstname: '',
+          lastname: '',
+          email: '',
+          telephone: '',
+          cart: '',
+          qty: undefined,
+          dateTime: new Date(),
+        }}
+        validate={(values) => {
+          const errors: Partial<Values> = {}
+          if (!values.email) {
+            errors.email = 'Enter your email'
+          } else if (
+            !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
+          ) {
+            errors.email = 'Invalid email address'
+          }
+          return errors
+        }}
+        onSubmit={(values, { setSubmitting }) => {
+          setTimeout(() => {
+            setSubmitting(false)
+            alert(JSON.stringify(values, null, 2))
+          }, 1000)
+        }}>
+        {({ submitForm, isSubmitting }) => (
+          <Form style={formStyle}>
+            <Grid container align='center'>
+              <Grid item xs={12} sm={6}>
+                <Field
+                  variant='outlined'
+                  style={textInputStyle}
+                  component={TextField}
+                  name='firstname'
+                  type='firstname'
+                  label='First Name'
+                />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <Field
+                  variant='outlined'
+                  style={textInputStyle}
+                  component={TextField}
+                  name='lastname'
+                  type='lastname'
+                  label='Last Name'
+                />
+              </Grid>
             </Grid>
-            <Grid item xs={12} sm={6}>
-              <Field
-                variant='outlined'
-                style={textInputStyle}
-                component={TextField}
-                name='lastname'
-                type='lastname'
-                label='Last Name'
-              />
+            <Grid container align='center'>
+              <Grid item xs={12} sm={6}>
+                <Field
+                  variant='outlined'
+                  style={textInputStyle}
+                  component={TextField}
+                  name='email'
+                  type='email'
+                  label='Email'
+                />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <Field
+                  variant='outlined'
+                  style={textInputStyle}
+                  component={TextField}
+                  name='telephone'
+                  type='telephone'
+                  label='Contact Number'
+                />
+              </Grid>
             </Grid>
-          </Grid>
-          <Grid container align='center'>
-            <Grid item xs={12} sm={6}>
-              <Field
-                variant='outlined'
-                style={textInputStyle}
-                component={TextField}
-                name='email'
-                type='email'
-                label='Email'
-              />
+            <Grid container align='center'>
+              <Grid item xs={12} sm={6}>
+                <Field
+                  variant='outlined'
+                  style={textInputStyle}
+                  component={TextField}
+                  select
+                  name='cart'
+                  type='cart'
+                  label='Select Product'>
+                  {OFFERINGS.map((option) => (
+                    <MenuItem key={option.id} value={option.name}>
+                      {option.name}
+                    </MenuItem>
+                  ))}
+                </Field>
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <Field
+                  variant='outlined'
+                  style={textInputStyle}
+                  component={TextField}
+                  name='qty'
+                  type='number'
+                  label='Qty'
+                />
+              </Grid>
             </Grid>
-            <Grid item xs={12} sm={6}>
-              <Field
-                variant='outlined'
-                style={textInputStyle}
-                component={TextField}
-                name='telephone'
-                type='telephone'
-                label='Contact Number'
-              />
-            </Grid>
-          </Grid>
-          <Grid container align='center'>
-            <Grid item xs={12} sm={6}>
-              <Field
-                variant='outlined'
-                style={textInputStyle}
-                component={TextField}
-                select
-                name='cart'
-                type='cart'
-                label='Select Product'>
-                {OFFERINGS.map((option) => (
-                  <MenuItem key={option.id} value={option.name}>
-                    {option.name}
-                  </MenuItem>
-                ))}
-              </Field>
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <Field
-                variant='outlined'
-                style={textInputStyle}
-                component={TextField}
-                name='qty'
-                type='number'
-                label='Qty'
-              />
-            </Grid>
-          </Grid>
-          <Grid item xs={12} align='center'>
-            <MuiPickersUtilsProvider utils={DateFnsUtils}>
-              <Field
-                inputVariant='outlined'
-                style={textInputStyle}
-                component={DateTimePicker}
-                name='dateTime'
-                label='Pick-Up Time'
-                disablePast
-              />
-            </MuiPickersUtilsProvider>
-          </Grid>
-          {isSubmitting && (
             <Grid item xs={12} align='center'>
-              <CircularProgress color='secondary' />
+              <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                <Field
+                  inputVariant='outlined'
+                  style={textInputStyle}
+                  component={DateTimePicker}
+                  name='dateTime'
+                  label='Pick-Up Time'
+                  disablePast
+                />
+              </MuiPickersUtilsProvider>
             </Grid>
-          )}
-          <Grid item xs={12} align='center'>
-            <Button
-              size='large'
-              variant='contained'
-              color='secondary'
-              disabled={isSubmitting}
-              onClick={submitForm}
-              endIcon={<SendIcon />}>
-              Submit
-            </Button>
-          </Grid>
-        </Form>
-      )}
-    </Formik>
+            {isSubmitting && (
+              <Grid item xs={12} align='center'>
+                <CircularProgress color='secondary' />
+              </Grid>
+            )}
+            <Grid item xs={12} align='center'>
+              <Button
+                size='large'
+                variant='contained'
+                color='secondary'
+                disabled={isSubmitting}
+                onClick={submitForm}
+                endIcon={<SendIcon />}>
+                Submit
+              </Button>
+            </Grid>
+          </Form>
+        )}
+      </Formik>
+    </React.Fragment>
   )
 }

@@ -1,12 +1,7 @@
 import React, { useState } from 'react'
+
 import { NavLink } from 'react-router-dom'
-
-// import { Switch, Route, NavLink } from 'react-router-dom'
-
-import AppBar from '@material-ui/core/AppBar'
-
-import Tabs from '@material-ui/core/Tabs'
-import Tab from '@material-ui/core/Tab'
+import { AppBar, Tab, Tabs} from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import PhoneRoundedIcon from '@material-ui/icons/PhoneRounded'
 import StorefrontRoundedIcon from '@material-ui/icons/StorefrontRounded'

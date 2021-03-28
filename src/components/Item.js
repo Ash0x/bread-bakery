@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { Link } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles'
 import Grid from '@material-ui/core/Grid'
 import Paper from '@material-ui/core/Paper'
@@ -17,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
     margin: 'auto',
     maxWidth: 500,
     backgroundColor: 'rgb(245, 245, 245,0.9)',
-    borderRadius: '1vh'
+    borderRadius: '1vh',
   },
   image: {
     width: 128,
@@ -69,7 +70,11 @@ export default function Item(props) {
                   </Typography>
                 </Grid>
                 <Grid item>
-                  <Button variant='outlined' color='secondary'>
+                  <Button
+                    variant='outlined'
+                    color='secondary'
+                    component={Link}
+                    to='/order'>
                     Buy Now
                   </Button>
                 </Grid>
